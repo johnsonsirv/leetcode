@@ -21,7 +21,8 @@ def three_sum(nums)
               if uniq_triplets.empty?
                 uniq_triplets.add([first, second, third])
               else
-                unless uniq_triplets.to_a[track].include?(first) && uniq_triplets.to_a[track].include?(second) && uniq_triplets.to_a[track].include?(second)
+                temp = uniq_triplets.to_a
+                unless temp[track].include?(first) && temp[track].include?(second) && temp[track].include?(third)
                   uniq_triplets.add([first, second, third])
                   track += 1
                 end
@@ -32,5 +33,30 @@ def three_sum(nums)
     uniq_triplets.to_a
 end
 
-p three_sum([-1, 0, 1, 2, -1, -4])
-p three_sum([-1,0,1,0])
+def three_sum_2(nums)
+  result = []
+  sorted = nums.sort
+  stop = sorted.size - 2
+  # left, right = nil, nil
+  (0...stop).each do |i|
+    left = i + 1
+    right = sorted.size - 1
+    while left < right
+      if sorted[i] + sorted[left] + sorted[right] == 0
+        result << [sorted[i], sorted[left], sorted[right]]
+        p "i #{i} left #{left}, right #{right}"
+        break
+      elsif  sorted[i] + sorted[left] + sorted[right] < 0
+        left += 1
+      else
+        right -= 1
+      end
+    end
+  end
+  result
+end
+
+# p three_sum_2([-1, 0, 1, 2, -1, -4])
+# p three_sum_2([-1,0,1,0])
+# p three_sum_2([-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0])
+p three_sum_2([-2,0,1,1,2])
