@@ -39,14 +39,3 @@ def reverse(list_node)
   end
   output.reverse.join('').to_i
 end
-
-def add(data)
- new_node = ListNode.new(data)
-  if !@val
-      @val = new_node
-      @next = @val
-  else
-      @next.next = new_node
-      @next = new_node
-  end
-end
