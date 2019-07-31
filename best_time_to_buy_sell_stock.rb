@@ -25,7 +25,6 @@ def max_profit_2(prices)
   0.upto(stop) do |indx|
     buy_at = prices[indx]
     sell = prices[indx + 1...prices.size].max
-    p "buy at #{buy_at} sell #{sell}"
     next if sell < buy_at
     profit = sell - buy_at
     max_profit = profit if profit > max_profit 
