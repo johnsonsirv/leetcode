@@ -34,29 +34,31 @@ def three_sum(nums)
 end
 
 def three_sum_2(nums)
-  result = []
+  result = Set[]
   sorted = nums.sort
   stop = sorted.size - 2
-  # left, right = nil, nil
   (0...stop).each do |i|
     left = i + 1
     right = sorted.size - 1
     while left < right
-      if sorted[i] + sorted[left] + sorted[right] == 0
+      _3sum = sorted[i] + sorted[left] + sorted[right]
+      if _3sum.zero?
         result << [sorted[i], sorted[left], sorted[right]]
         p "i #{i} left #{left}, right #{right}"
-        break
-      elsif  sorted[i] + sorted[left] + sorted[right] < 0
+       left += 1
+       right -= 1
+      elsif _3sum < 0
         left += 1
       else
         right -= 1
       end
     end
   end
-  result
+
+  result.to_a
 end
 
 # p three_sum_2([-1, 0, 1, 2, -1, -4])
 # p three_sum_2([-1,0,1,0])
-# p three_sum_2([-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0])
-p three_sum_2([-2,0,1,1,2])
+p three_sum_2([-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0])
+# p three_sum_2([-2,0,1,1,2])
