@@ -29,4 +29,14 @@ def count_bits_with_bitewise_operator
   output
 end
 
-p count_bits(5)
+
+def count_bits_with_string_method(num)
+  output = [0]
+  1.upto(num) do |n|
+    count = n.to_s(2).count('1')
+    output << count
+  end
+
+  output
+end
+p count_bits_with_string_method(5)
