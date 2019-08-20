@@ -18,5 +18,15 @@ def count_bits(num)
   output
 end
 
+def count_bits_with_bitewise_operator
+  output = [0]
+  1.upto(num) do |n|
+    left_bit = n & 1
+    bit_div = n >> 1
+    output << output[bit_div] + left_bit
+  end
+
+  output
+end
 
 p count_bits(5)
