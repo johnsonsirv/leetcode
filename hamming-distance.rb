@@ -40,6 +40,11 @@ def bit_array(n)
  Array.new(32) { |i| n[i] }.reverse! 
 end
 
+
+def hamming_distance_3(x, y)
+  (x ^ y).to_s(2).count('1')  
+end
+
 p hamming_distance_2(4, 14)
 # p hamming_distance_2(1, 4)
 
